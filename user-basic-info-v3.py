@@ -4,7 +4,7 @@ from sys import argv
 absent_threshold = 250
 starting_id = 1662369
 id_range = 40000
-session_time = 627122
+session_time = 627123
 out_file = "data.csv"
 
 user = ""
@@ -33,7 +33,7 @@ def getBatchAdvising(dataDownloader,startID=1669207, steps=10, time=627120,oFile
             absent_error += 1
             print("W: Student not found")
         except UsisSesssionExpired:
-            curl = getCredentials("riadkabir45@gmail.com","21133112Riad@")
+            curl = getCredentials(user,passwd)
                
 
 try:
