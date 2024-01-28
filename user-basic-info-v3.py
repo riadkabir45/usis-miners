@@ -10,9 +10,15 @@ out_file = "data.csv"
 user = ""
 passwd = ""
 
-if len(argv) == 3:
-    out_file = f"dataN{argv[1]}.csv"
-    starting_id = int(argv[2])
+if len(argv) >= 3:
+    user = argv[1]
+    passwd = argv[2]
+
+if len(argv) >= 4:
+    starting_id = int(argv[3])
+
+if len(argv) >= 5:
+    id_range = int(argv[4])
 
 def getBatchAdvising(dataDownloader,startID=1669207, steps=10, time=627120,oFile="data.csv"):
     absent_error = 0
