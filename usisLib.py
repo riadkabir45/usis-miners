@@ -10,6 +10,23 @@ from tabula import read_pdf as PdfTableScrap
 
 # import pdb; pdb.set_trace()
 
+db = True
+
+if db:
+    import mysql.connector as dbc
+
+    mydb = dbc.connect(
+        host='sql6.freesqldatabase.com',
+        user='sql6680302',
+        database='sql6680302',
+        password='hSw1yIMbJQ'
+        )
+    cursor = mydb.cursor()
+    dbrun = cursor.execute
+
+    def dpush(aid,asid,aname,adep):
+        dbrun(f"insert into usis_basic_info (id,sid,name,dep) values ({aid},{asid},'{aname}','{adep}') ON DUPLICATE KEY UPDATE id={aid},name='{aname}',dep='{adep}'")
+        dbrun('commit')
 
 class InvalidUsisUser(Exception):
     "Raised when user or pass is incorrect"
@@ -121,6 +138,8 @@ def getSingleAdvising(dataDownloader,serverID,sessionTime,storeFile=None):
         timeTable.append("NULL")
     if type(storeFile) == str:
         oFile = open(storeFile,"a")
+        if db:
+            dpush(timeTable[2],serverID,timeTable[0],timeTable[1])
         print(f"{serverID},{','.join(timeTable[2::-1])},{','.join(timeTable[3:])}",file=oFile)
         oFile.close()
 
