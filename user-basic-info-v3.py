@@ -1,7 +1,7 @@
 from usisLib import *
 from sys import argv
 
-absent_threshold = 250
+absent_threshold = -1
 starting_id = 1662369
 id_range = 40000
 session_time = 627123
@@ -37,7 +37,7 @@ def getBatchAdvising(dataDownloader,startID=1669207, steps=10, time=627120,oFile
             
         except UsisInvalidStudent:
             absent_error += 1
-            print("W: Student not found")
+            print("W: Student not found at threshold -",absent_error)
         except UsisSesssionExpired:
             curl = getCredentials(user,passwd)
                
