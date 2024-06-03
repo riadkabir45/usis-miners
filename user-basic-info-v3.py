@@ -24,7 +24,7 @@ if len(argv) >= 6:
     session_time = int(argv[5])
 
 if len(argv) >= 7:
-    out_file = int(argv[6])
+    out_file = argv[6]
 
 def getBatchAdvising(dataDownloader,startID=1669207, steps=10, time=627120,oFile="data.csv"):
     absent_error = 0
