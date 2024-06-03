@@ -10,7 +10,7 @@ from tabula import read_pdf as PdfTableScrap
 
 # import pdb; pdb.set_trace()
 
-db = True
+db = False
 
 if db:
     import mysql.connector as dbc
