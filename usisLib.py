@@ -10,24 +10,6 @@ from tabula import read_pdf as PdfTableScrap
 
 # import pdb; pdb.set_trace()
 
-db = False
-
-if db:
-    import mysql.connector as dbc
-
-    mydb = dbc.connect(
-        host='sql6.freesqldatabase.com',
-        user='sql6680302',
-        database='sql6680302',
-        password='hSw1yIMbJQ'
-        )
-    cursor = mydb.cursor()
-    dbrun = cursor.execute
-
-    def dpush(aid,asid,aname,adep):
-        dbrun(f"insert into usis_basic_info (id,sid,name,dep) values ({aid},{asid},'{aname}','{adep}') ON DUPLICATE KEY UPDATE id={aid},name='{aname}',dep='{adep}'")
-        dbrun('commit')
-
 class InvalidUsisUser(Exception):
     "Raised when user or pass is incorrect"
     pass
