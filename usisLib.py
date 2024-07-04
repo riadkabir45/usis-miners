@@ -120,8 +120,6 @@ def getSingleAdvising(dataDownloader,serverID,sessionTime,storeFile=None):
         timeTable.append("NULL")
     if type(storeFile) == str:
         oFile = open(storeFile,"a")
-        if db:
-            dpush(timeTable[2],serverID,timeTable[0],timeTable[1])
         print(f"{serverID},{','.join(timeTable[2::-1])},{','.join(timeTable[3:])}",file=oFile)
         oFile.close()
 
